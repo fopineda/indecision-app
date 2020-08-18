@@ -1,10 +1,12 @@
-'use strict';
 
 // ES5 functions
-var square = function square(x) {
+const square = function (x) {
     return x * x;
 };
 console.log(square(8));
+
+
+
 
 // ES6 functions
 
@@ -14,13 +16,11 @@ console.log(square(8));
 // };
 
 // Concise functions 
-var squareArrow = function squareArrow(x) {
-    return x * x;
-};
+const squareArrow = (x) => x * x;
 console.log(squareArrow(8));
 
-var getFirstName = function getFirstName(name) {
+const getFirstName = (name) => {
     return name.split(' ')[0];
 };
 // const getFirstName = (name) => name.split(' ')[0];
-console.log(getFirstName('Felipe Pineda'));
+console.log(getFirstName('Felipe Pineda'))
