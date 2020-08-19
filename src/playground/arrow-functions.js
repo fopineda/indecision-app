@@ -8,7 +8,7 @@ console.log(square(8));
 
 
 
-// ES6 functions
+// ES6 arrow functions
 
 // Verbose functions
 // const squareArrow = (x) => {
