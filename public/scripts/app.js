@@ -29,6 +29,13 @@ var numbers = [55, 101, 1000];
 
 var appRoot = document.getElementById('app');
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNumber = Math.floor(Math.random() * app.options.length);
+    var randomOption = app.options[randomNumber];
+    alert(randomOption);
+    console.log(randomNumber);
+};
+
 var renderTemplateApp = function renderTemplateApp() {
     var template = React.createElement(
         'div',
@@ -52,6 +59,11 @@ var renderTemplateApp = function renderTemplateApp() {
             'p',
             null,
             app.options.length
+        ),
+        React.createElement(
+            'button',
+            { disabled: app.options.length == 0, onClick: onMakeDecision },
+            'What should I do?'
         ),
         React.createElement(
             'button',

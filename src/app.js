@@ -29,6 +29,14 @@ const numbers = [55,101,1000];
 
 const appRoot = document.getElementById('app');
 
+const onMakeDecision = () => {
+    const randomNumber = Math.floor(Math.random() * app.options.length);
+    const randomOption = app.options[randomNumber];
+    alert(randomOption)
+    console.log(randomNumber)
+
+}
+
 const renderTemplateApp = () => {
     const template = (
         <div>
@@ -36,6 +44,7 @@ const renderTemplateApp = () => {
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? 'Here are your options': 'No options'}</p>
             <p>{app.options.length}</p>
+            <button disabled={app.options.length == 0} onClick={onMakeDecision}>What should I do?</button>
             <button onClick={onRemoveAll}>Remove All</button>
             <ol>
                 {
