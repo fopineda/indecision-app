@@ -40,15 +40,24 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    // override so the .bind doesn't become so expensive
+    // called so that it initially binds. Otherwise if you call .bind() in the onClick it will bind every time it runs, thus making it expensive
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this)
+    }
+
+
     handleRemoveAll() {
+        console.log(this.props.options);
     }
 
     render () {
         return (
             <div>
-                {/* {this.props.options.map((option) => <p key={option}>{option}</p>)} */}
-                {this.props.options.map((option) => <Option key={option} optionText={option} />)}
                 <button onClick={this.handleRemoveAll}>Remove All</button>
+                {this.props.options.map((option) => <Option key={option} optionText={option} />)}
+                
             </div>
         );
     }
