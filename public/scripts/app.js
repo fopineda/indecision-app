@@ -27,6 +27,24 @@ var IndecisionApp = function (_React$Component) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            // automatically ran when components first run/mount
+            console.log('fetching data');
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            // automatically ran when components first update
+            console.log('saving data');
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            // automatically ran when (before) component goes away
+            console.log('cwu');
+        }
+    }, {
         key: 'handlePick',
         value: function handlePick() {
             var randomNumber = Math.floor(Math.random() * this.state.options.length);

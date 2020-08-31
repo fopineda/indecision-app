@@ -9,6 +9,20 @@ class IndecisionApp extends React.Component {
             options: props.options
         };
     }
+    
+    componentDidMount() {
+        // automatically ran when components first run/mount
+        console.log('fetching data');
+    }
+    componentDidUpdate(prevProps, prevState){
+        // automatically ran when components first update
+        console.log('saving data');
+    }
+    componentWillUnmount() {
+        // automatically ran when (before) component goes away
+        console.log('cwu')
+    }
+
     handlePick() {
         const randomNumber = Math.floor(Math.random() * this.state.options.length);
         const randomOption = this.state.options[randomNumber];
