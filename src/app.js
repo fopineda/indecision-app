@@ -6,7 +6,7 @@ class IndecisionApp extends React.Component {
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
-            options: props.options
+            options: []
         };
     }
     
@@ -22,7 +22,7 @@ class IndecisionApp extends React.Component {
             // do nothing
         }     
     }
-    componentDidUpdate(prevProps, prevState){ // automatically ran when components first update
+    componentDidUpdate(prevProps, prevState){ // automatically ran when components update
         if (prevState.options.length !== this.state.options.length){
             const json = JSON.stringify(this.state.options);
             localStorage.setItem('options', json)
@@ -31,7 +31,6 @@ class IndecisionApp extends React.Component {
     componentWillUnmount() { // automatically ran when (before) component goes away
         console.log('cwu')
     }
-
     handlePick() {
         const randomNumber = Math.floor(Math.random() * this.state.options.length);
         const randomOption = this.state.options[randomNumber];
@@ -80,10 +79,6 @@ class IndecisionApp extends React.Component {
         )
     }
 }
-IndecisionApp.defaultProps = {
-    options: []
-}
-
 const Header = (props) => {
     return (
         <div>
