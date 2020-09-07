@@ -102,7 +102,7 @@ const isAdult = (age) => {
 }
 
 const canDrink = (age) => {
-    if (isAdult(age)){
+    if (age >= 21){
         return true;
     };
     return false;
