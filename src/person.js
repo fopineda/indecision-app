@@ -1,3 +1,4 @@
+
 const isAdult = (age) => {
     if (age >= 18){
         return true;
@@ -12,8 +13,15 @@ const canDrink = (age) => {
     return false;
 }
 
+const isSenior = (age) => {
+    if (age >= 65){
+        return true;
+    };
+    return false
+}
 
-module.exports = {
+export {
     isAdult,
-    canDrink
+    canDrink,
+    isSenior as default
 }

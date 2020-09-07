@@ -1,6 +1,6 @@
 
 const square = (x) => x*x;
 
-module.exports = {
+export {
     square
 }
