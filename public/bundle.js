@@ -65,9 +65,54 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+const { square } = __webpack_require__(1);
+const {isAdult, canDrink} = __webpack_require__(2);
 
 console.log('app.js is running');
+console.log(square(4));
+console.log(isAdult(17));
+console.log(isAdult(18));
+console.log(isAdult(19));
+console.log(canDrink(17));
+console.log(canDrink(18));
+console.log(canDrink(19));
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+
+const square = (x) => x*x;
+
+module.exports = {
+    square
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+const isAdult = (age) => {
+    if (age >= 18){
+        return true;
+    };
+    return false;
+}
+
+const canDrink = (age) => {
+    if (isAdult(age)){
+        return true;
+    };
+    return false;
+}
+
+
+module.exports = {
+    isAdult,
+    canDrink
+}
 
 /***/ })
 /******/ ]);
