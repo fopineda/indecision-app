@@ -1,12 +1,6 @@
-import { square } from './utils.js';
-import isSenior, {isAdult, canDrink} from './person.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('app.js is running');
-console.log(square(4));
-console.log(isAdult(17));
-console.log(isAdult(18));
-console.log(isAdult(19));
-console.log(canDrink(17));
-console.log(canDrink(18));
-console.log(canDrink(19));
-console.log(isSenior(66));
+
+const template = <p>this is jsx from webpack using babel</p>
+ReactDOM.render(template, document.getElementById('app'));
