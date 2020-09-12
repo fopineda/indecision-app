@@ -6,15 +6,34 @@ import Options from './Options';
 
 
 export default class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            options: []
-        };
+    state = {
+        options: []
+    }
+    handlePick = () => {
+        const randomNumber = Math.floor(Math.random() * this.state.options.length);
+        const randomOption = this.state.options[randomNumber];
+        alert(randomOption);
+    }
+    handleDeleteOptions = () => {
+        this.setState(() => ({ options: [] }));
+    }
+    handleDeleteOption = (optionToRemove) => {
+        this.setState((prevState) => ({ 
+            options:prevState.options.filter((option) => {
+                // keeps in array whatever is evaluated to true
+                // in this case, it will remove the option wanting to be removed
+                return optionToRemove !== option;
+            }) 
+        }))
+    }
+    handleAddOption = (option) => {
+        // if there is empty message (it got pass the other layer defense below)
+        if (!option) {
+            return 'Enter valid value to add item';
+        } else if (this.state.options.indexOf(option) > -1) { // if index is found then it is a duplicate item
+            return 'This option already exists';
+        }
+        this.setState((prevState) => ({ options: prevState.options.concat([option]) }))
     }
     
     componentDidMount() { // automatically ran when components first run/mount
@@ -38,32 +57,7 @@ export default class IndecisionApp extends React.Component {
     componentWillUnmount() { // automatically ran when (before) component goes away
         console.log('cwu')
     }
-    handlePick() {
-        const randomNumber = Math.floor(Math.random() * this.state.options.length);
-        const randomOption = this.state.options[randomNumber];
-        alert(randomOption);
-    }
-    handleDeleteOptions() {
-        this.setState(() => ({ options: [] }));
-    }
-    handleDeleteOption(optionToRemove) {
-        this.setState((prevState) => ({ 
-            options:prevState.options.filter((option) => {
-                // keeps in array whatever is evaluated to true
-                // in this case, it will remove the option wanting to be removed
-                return optionToRemove !== option;
-            }) 
-        }))
-    }
-    handleAddOption(option) {
-        // if there is empty message (it got pass the other layer defense below)
-        if (!option) {
-            return 'Enter valid value to add item';
-        } else if (this.state.options.indexOf(option) > -1) { // if index is found then it is a duplicate item
-            return 'This option already exists';
-        }
-        this.setState((prevState) => ({ options: prevState.options.concat([option]) }))
-    }
+    
     render() {
         const title = 'Indecision'
         const subtitle = 'Put your life in JavaScript\'s random functionality';

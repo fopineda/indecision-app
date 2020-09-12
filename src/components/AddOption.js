@@ -1,19 +1,10 @@
 import React from 'react';
 
 export default class AddOption extends React.Component {
-    // We are using two add options:
-        // 1. built into the component (handleAddOption(e))
-        // 2. passed down from parents (handleAddOption)
-
-    // because we are using "this" inside handleAddOption(e)
-    constructor(props) {
-        super(props);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            error: undefined
-        }
+    state = {
+        error: undefined
     }
-    handleAddOption(e) { 
+    handleAddOption = (e) => { 
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
